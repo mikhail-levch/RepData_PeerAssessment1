@@ -12,7 +12,7 @@ activity <- read.csv("activity.csv")
 ```
 ## What is mean total number of steps taken per day?
 I made the histogram of the total number of steps taken each day by using basic plot system.
-```{r histogram total number pf steps per day, fig.height=4}
+```{r, fig.height=4}
 steps_pday <- aggregate(steps ~ date,activity,sum)
 
 hist(steps_pday$steps,breaks = 20,main = "Histogram of the total number of steps taken each day",xlab = "Steps",col = "light blue")
@@ -27,7 +27,7 @@ The mean and median are equal to **`r mean_steps`** and **`r mean_steps`** respe
 
 ## What is the average daily activity pattern?
 For exploring daily activity pattern I made a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all days (y-axis).
-```{r time series plot,fig.height=4}
+```{r,fig.height=4}
 library(ggplot2,quietly = TRUE)
 ggplot(activity,aes(interval,steps))+stat_summary(fun.y = mean, geom = "line",na.rm = TRUE,col="steelblue")+ggtitle("Time series plot of the average number of steps taken")+xlab("5-minute interval")
 ```

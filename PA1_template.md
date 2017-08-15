@@ -16,12 +16,12 @@ hist(steps_pday$steps,breaks = 20,main = "Histogram of the total number of steps
 abline(v = mean(steps_pday$steps,na.rm = TRUE),lwd=2)
 ```
 
-![](PA1_template_files/figure-html/histogram total number pf steps per day-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-1-1.png)<!-- -->
 Then calculate the mean and median of the total number of steps taken per day.
 
 ```r
-mean_steps <- as.integer(trunc(mean(steps_pday$steps,na.rm = TRUE)))
-median_steps <- as.integer(trunc(median(steps_pday$steps,na.rm = TRUE)))
+mean_steps <- as.integer(round(mean(steps_pday$steps,na.rm = TRUE)))
+median_steps <- as.integer(round(median(steps_pday$steps,na.rm = TRUE)))
 ```
 The mean and median are equal to **10766** and **10766** respectively.
 
@@ -33,7 +33,7 @@ library(ggplot2,quietly = TRUE)
 ggplot(activity,aes(interval,steps))+stat_summary(fun.y = mean, geom = "line",na.rm = TRUE,col="steelblue")+ggtitle("Time series plot of the average number of steps taken")+xlab("5-minute interval")
 ```
 
-![](PA1_template_files/figure-html/time series plot-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
 
 ```r
 steps_p5min <- aggregate(steps~interval,activity,mean)
@@ -67,7 +67,7 @@ hist(steps_pday2$steps,breaks = 20,main = "After imputing",xlab = "Steps",col = 
 mtext("Histogram of the total number of steps taken each day",outer = TRUE)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-7-1.png)<!-- -->
 
 ```r
 mean_steps_2 <- mean(steps_pday2$steps,na.rm = TRUE)
@@ -91,5 +91,5 @@ And then made a panel plot containing a time series plot of the 5-minute interva
 ggplot(data=activity_noNA,aes(interval,steps))+stat_summary(fun.y = mean,geom="line",col="steelblue")+facet_grid(.~day)+ggtitle("The average number of steps across weekdays and weekends")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-8-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
 Thank you!
